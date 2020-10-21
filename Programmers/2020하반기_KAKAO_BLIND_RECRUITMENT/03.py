@@ -10,15 +10,6 @@ SAMPLE = [
 # career = [0: "junior", 1: "senior"]
 # food = [0: "chicken", 1: "pizza"]
 
-class Applicant:
-    def __init__(self, language, job, career, food, score):
-        self.language = language
-        self.job = job
-        self.career = career
-        self.food = food
-        self.score = score
-
-
 
 def solution(info, query):
     answer = []
@@ -35,26 +26,16 @@ def solution(info, query):
     sample_condition.append(career)
     sample_condition.append(food)
 
-    applicant_list = []
     score_list = []
 
     for idx in range(len(info)):
         spec = info[idx].split(' ')
         print("spec: ", spec)
 
-        applicant = Applicant(spec[0], spec[1], spec[2], spec[3], spec[4])
-
-        applicant_list.append(applicant)
         score_list.append(int(spec[4]))
 
         for sdx in range(len(sample_condition)):
             sample_condition[sdx][spec[sdx]].append(idx)
-
-        # language[spec[0]].append(idx)
-        # job[spec[1]].append(idx)
-        # career[spec[2]].append(idx)
-        # food[spec[3]].append(idx)
-
 
     for idx in range(len(query)):
         conditions = query[idx].split(' and ')
